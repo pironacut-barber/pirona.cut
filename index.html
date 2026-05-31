@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pirona Cut | Tienda de Barbería Premium</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&family=Playball&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Stylesheet (no subdirectories) -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">
+                <span class="logo-pirona">Pirona</span><span class="logo-cut-badge">.cut</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#catalogo" class="nav-link">Productos</a>
+                <a href="#curso" class="nav-link">Curso</a>
+                <a href="#comunidad" class="nav-link">Galería</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="admin-mode-indicator" class="admin-badge hidden" onclick="openAdminPanel()">
+                    <i class="fa-solid fa-user-gear"></i> Modo Admin
+                </button>
+                <div class="cart-icon-wrapper" onclick="toggleCart()">
+                    <i class="fa-solid fa-shopping-bag cart-btn-icon"></i>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button class="close-mobile-menu" onclick="toggleMobileMenu()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a href="#catalogo" onclick="toggleMobileMenu()">Productos</a>
+        <a href="#curso" onclick="toggleMobileMenu()">Curso</a>
+        <a href="#comunidad" onclick="toggleMobileMenu()">Galería</a>
+        <a href="#contacto" onclick="toggleMobileMenu()">Contacto</a>
+        <button id="mobile-admin-btn" class="admin-badge hidden" onclick="toggleMobileMenu(); openAdminPanel();">
+            <i class="fa-solid fa-user-gear"></i> Modo Admin
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-container container">
+            <div class="hero-content movable-element" id="movable-hero-content">
+                <h2 class="hero-subtitle" id="display-hero-subtitle">Cuidado & Estilo Masculino</h2>
+                <h1 class="hero-title" id="display-hero-title">PIRONA.CUT</h1>
+                <p class="hero-text" id="display-hero-desc">Lleva el estilo de la barbería a tu casa. Productos premium para el cuidado de tu cabello y barba con asesoramiento personalizado y envío directo a tu WhatsApp.</p>
+                <div class="hero-buttons">
+                    <a href="#catalogo" class="btn btn-primary">Ver Catálogo</a>
+                    <a href="#" target="_blank" class="btn btn-secondary" id="display-hero-booking-btn">Reservar Cita</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper movable-element" id="movable-hero-img">
+                <img src="pirona.jpeg" alt="Pirona Cut Logo" class="hero-logo-img" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Features -->
+    <section class="features movable-element" id="movable-features">
+        <div class="feature-card">
+            <i class="fa-solid fa-shield-halved feature-icon"></i>
+            <h3>Productos Originales</h3>
+            <p>Trabajamos solo con marcas reconocidas para garantizar la salud de tu piel y cabello.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-truck-fast feature-icon"></i>
+            <h3>Pedidos por WhatsApp</h3>
+            <p>Atención directa y rápida. Haces tu pedido en la web y coordinas la entrega de inmediato.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-award feature-icon"></i>
+            <h3>Calidad Premium</h3>
+            <p>Ceras, aceites y bálsamos seleccionados por nuestros barberos profesionales.</p>
+        </div>
+    </section>
+
+    <!-- Main Store / Catalog Section -->
+    <main id="catalogo" class="catalog-section">
+        <div class="container">
+            <div class="section-header movable-element" id="movable-catalog-header">
+                <h2 class="section-title">Nuestros Productos</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle">Explora nuestra colección selectiva de productos para caballeros.</p>
+            </div>
+
+            <!-- Search and Filter Bar -->
+            <div class="search-filter-container movable-element" id="movable-catalog-filters">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Buscar cera, aceite, pomada...">
+                </div>
+                <div class="category-filters" id="category-filters">
+                    <button class="filter-btn active" data-category="all">Todos</button>
+                    <button class="filter-btn" data-category="Cabello">Cabello</button>
+                    <button class="filter-btn" data-category="Barba">Barba</button>
+                    <button class="filter-btn" data-category="Afeitado">Afeitado</button>
+                    <button class="filter-btn" data-category="Combos">Combos</button>
+                </div>
+            </div>
+
+            <!-- Admin Controls for Products (only visible to admin) -->
+            <div id="admin-actions-bar" class="admin-actions-bar hidden">
+                <h3><i class="fa-solid fa-toolbox"></i> Herramientas de Administrador</h3>
+                <div class="admin-buttons-group">
+                    <button class="btn btn-admin-add" onclick="openAddProductModal()">
+                        <i class="fa-solid fa-plus"></i> Agregar Producto
+                    </button>
+                    <button class="btn btn-admin-add" onclick="openAddPostModal()">
+                        <i class="fa-solid fa-share-nodes"></i> Agregar Publicación Redes
+                    </button>
+                    <button class="btn btn-admin-add" style="background: linear-gradient(135deg, #aa841c 0%, #d4af37 100%);" onclick="openSettingsModal()">
+                        <i class="fa-solid fa-gears"></i> Editar Info de Página
+                    </button>
+                    <button class="btn btn-admin-add" style="background: linear-gradient(135deg, #1c7aaa 0%, #37afd4 100%);" onclick="openCustomizerModal()">
+                        <i class="fa-solid fa-palette"></i> Diseñar Estilo
+                    </button>
+                    <button class="btn btn-admin-backup" id="btn-visual-edit" onclick="toggleVisualEditMode()">
+                        <i class="fa-solid fa-arrows-up-down-left-right"></i> Activar Edición Visual
+                    </button>
+                    <button class="btn btn-admin-backup" onclick="resetLayoutOffsets()">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> Restablecer Posiciones
+                    </button>
+                    <button class="btn btn-admin-backup" onclick="exportStoreData()">
+                        <i class="fa-solid fa-download"></i> Guardar Copia (JSON)
+                    </button>
+                    <button class="btn btn-admin-backup" id="btn-full-backup" onclick="exportFullWebsiteBackup()">
+                        <i class="fa-solid fa-file-zipper"></i> Copia Completa (ZIP)
+                    </button>
+                    <button class="btn btn-admin-backup" onclick="document.getElementById('import-file-input').click()">
+                        <i class="fa-solid fa-upload"></i> Cargar Copia (JSON)
+                    </button>
+                    <input type="file" id="import-file-input" class="hidden" accept=".json" onchange="importStoreData(event)">
+                    <button class="btn btn-admin-danger" onclick="resetStoreToDefault()">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> Restablecer Tienda
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid movable-element" id="products-grid">
+                <!-- Dynamically populated via JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Barber Course Section -->
+    <section id="curso" class="curso-section">
+        <div class="container">
+            <div class="section-header movable-element" id="movable-course-header">
+                <h2 class="section-title">Curso de Barbería</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle">Conviértete en un profesional del corte. Formación integral desde lo básico a lo avanzado.</p>
+            </div>
+
+            <div class="curso-container">
+                <div class="curso-info movable-element" id="movable-course-info">
+                    <h3>¿Qué aprenderás?</h3>
+                    <p class="curso-desc">Nuestro curso está diseñado para llevarte paso a paso por el arte de la barbería clásica y moderna, brindándote las herramientas técnicas y de negocio para tener éxito en esta profesión.</p>
+                    
+                    <div class="curso-topics">
+                        <div class="curso-topic-item">
+                            <i class="fa-solid fa-book"></i>
+                            <span class="curso-topic-text"><strong>Teoría Completa:</strong> Conceptos fundamentales, morfología y cuidado capilar.</span>
+                        </div>
+                        <div class="curso-topic-item">
+                            <i class="fa-solid fa-hand-fist"></i>
+                            <span class="curso-topic-text"><strong>Práctica Real:</strong> Prácticas intensivas para dominar el uso de las herramientas.</span>
+                        </div>
+                        <div class="curso-topic-item">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span class="curso-topic-text"><strong>Técnica de Desvanecido:</strong> Degradados perfectos (fade) y transiciones limpias.</span>
+                        </div>
+                        <div class="curso-topic-item">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span class="curso-topic-text"><strong>Aprender Técnicas:</strong> Técnicas avanzadas de peinado, texturizado y delineado.</span>
+                        </div>
+                        <div class="curso-topic-item">
+                            <i class="fa-solid fa-scissors"></i>
+                            <span class="curso-topic-text"><strong>Técnicas con Tijeras:</strong> Manejo profesional de tijera sobre peine y esculpido.</span>
+                        </div>
+                        <div class="curso-topic-item">
+                            <i class="fa-solid fa-crown"></i>
+                            <span class="curso-topic-text"><strong>Cortes Modernos:</strong> Tendencias actuales, cortes urbanos y clásicos renovados.</span>
+                        </div>
+                        <div class="curso-topic-item">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span class="curso-topic-text"><strong>Negocio de la Barbería:</strong> Cómo administrar tu propio local o potenciar tu marca.</span>
+                        </div>
+                        <div class="curso-topic-item">
+                            <i class="fa-solid fa-users"></i>
+                            <span class="curso-topic-text"><strong>Atención al Cliente:</strong> Protocolo de servicio y fidelización para clientes de alta gama.</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/573106845432?text=Hola%20Pirona%20Cut!%20Me%20gustaría%20recibir%20más%20información%20sobre%20el%20Curso%20de%20Barbería%20desde%20lo%20básico%20a%20lo%20avanzado." target="_blank" class="btn btn-primary" id="btn-curso-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Inscribirse o Solicitar Info
+                    </a>
+                </div>
+
+                <div class="curso-badge-wrapper movable-element" id="movable-course-badge">
+                    <div class="curso-badge-card">
+                        <i class="fa-solid fa-award curso-badge-icon"></i>
+                        <h4>Certificado Oficial</h4>
+                        <p>Al finalizar satisfactoriamente todas las clases y evaluaciones prácticas, recibirás un certificado físico y digital que respalda tus conocimientos y habilidades como barbero profesional egresado de Pirona Cut.</p>
+                        <div class="gold-line" style="margin: 15px auto 0 auto; width: 40px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Embeds Section -->
+    <section id="comunidad" class="social-gallery-section">
+        <div class="container">
+            <div class="section-header movable-element" id="movable-gallery-header">
+                <h2 class="section-title">Pirona en Redes</h2>
+                <div class="gold-line"></div>
+                <p class="section-subtitle">Sigue nuestros trabajos, tutoriales y consejos en Instagram, TikTok, YouTube y Facebook.</p>
+            </div>
+
+            <!-- Social Media Platform Filters (Tabs) -->
+            <div class="social-filters" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; overflow-x: auto; padding-bottom: 5px;">
+                <button class="filter-btn social-filter-btn active" data-platform="all">Todos</button>
+                <button class="filter-btn social-filter-btn" data-platform="foto"><i class="fa-solid fa-image" style="color:#d4af37; margin-right: 5px;"></i> Fotos</button>
+                <button class="filter-btn social-filter-btn" data-platform="video"><i class="fa-solid fa-circle-play" style="color:#d4af37; margin-right: 5px;"></i> Videos</button>
+                <button class="filter-btn social-filter-btn" data-platform="youtube"><i class="fa-brands fa-youtube" style="color:#ff0000; margin-right: 5px;"></i> YouTube</button>
+                <button class="filter-btn social-filter-btn" data-platform="instagram"><i class="fa-brands fa-instagram" style="color:#e6683c; margin-right: 5px;"></i> Instagram</button>
+                <button class="filter-btn social-filter-btn" data-platform="tiktok"><i class="fa-brands fa-tiktok" style="color:#ffffff; margin-right: 5px;"></i> TikTok</button>
+                <button class="filter-btn social-filter-btn" data-platform="facebook"><i class="fa-brands fa-facebook" style="color:#1877f2; margin-right: 5px;"></i> Facebook</button>
+            </div>
+            
+            <div class="social-grid movable-element" id="social-grid">
+                <!-- Dynamically populated via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <div class="contact-card movable-element" id="movable-contact-card">
+                <div class="contact-info">
+                    <h2>Visítanos o Escríbenos</h2>
+                    <div class="gold-line-left"></div>
+                    <p class="contact-desc">¿Tienes dudas sobre qué producto es mejor para ti? Envíanos un mensaje o visítanos en nuestro local.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <h4>Dirección</h4>
+                                <p id="display-contact-address">Calle 3 con Carrera 30 local 30-16</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <h4>Teléfono / WhatsApp</h4>
+                                <p id="display-contact-phone">+57 310 684 5432</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <h4>Horario de Atención</h4>
+                                <p id="display-contact-hours" style="white-space: pre-line;">Lunes a Sábado: 8:30 AM - 1:00 PM y 2:30 PM - 8:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" target="_blank" id="display-social-ig"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" target="_blank" id="display-social-tk"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" target="_blank" id="display-social-yt"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" target="_blank" id="display-social-fb"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="contact-logo-container">
+                    <img src="logo.jpg" alt="Pirona Cut Logo" class="contact-logo-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2026 Pirona Cut. Todos los derechos reservados. Creado para caballeros distinguidos.</p>
+            <div class="footer-buttons">
+                <!-- Secret/Discrete access for owner -->
+                <button id="admin-login-btn" class="btn-footer-link" onclick="openLoginModal()">
+                    <i class="fa-solid fa-lock"></i> Acceso Dueño
+                </button>
+                <button id="admin-logout-btn" class="btn-footer-link hidden" onclick="logoutAdmin()">
+                    <i class="fa-solid fa-lock-open"></i> Cerrar Sesión Admin
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SHOPPING CART SLIDE OUT DRAWER -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-drawer-header">
+            <h3><i class="fa-solid fa-shopping-bag"></i> Tu Carrito</h3>
+            <button class="close-cart-btn" onclick="toggleCart()">&times;</button>
+        </div>
+        
+        <div class="cart-items-container" id="cart-items">
+            <!-- Dynamically populated via JavaScript -->
+            <div class="empty-cart-message">
+                <i class="fa-solid fa-box-open"></i>
+                <p>Tu carrito está vacío</p>
+                <a href="#catalogo" class="btn btn-primary btn-sm" onclick="toggleCart()">Explorar Tienda</a>
+            </div>
+        </div>
+
+        <div class="cart-drawer-footer">
+            <div class="cart-summary-line">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal">$0 COP</span>
+            </div>
+            <div class="cart-summary-line">
+                <span>Envío:</span>
+                <span class="gold-text">A convenir</span>
+            </div>
+            <div class="cart-summary-total">
+                <span>Total:</span>
+                <span id="cart-total">$0 COP</span>
+            </div>
+            
+            <button class="btn btn-whatsapp-checkout" id="whatsapp-checkout-btn" onclick="checkoutWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Enviar Pedido por WhatsApp
+            </button>
+        </div>
+    </div>
+    <!-- Cart Overlay Backdrop -->
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+
+    <!-- ==================== MODALES DEL ADMINISTRADOR ==================== -->
+
+    <!-- Modal 1: Login de Administrador -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('login-modal')">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-shield-halved gold-text"></i> Acceso Administrador</h2>
+                <p>Ingresa la contraseña del dueño para gestionar la tienda</p>
+            </div>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="admin-password">Contraseña</label>
+                    <input type="password" id="admin-password" required placeholder="Ingresa la contraseña...">
+                    <span id="login-error-msg" class="error-text hidden">Contraseña incorrecta. Inténtalo de nuevo.</span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: Agregar/Editar Producto -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content modal-content-lg">
+            <span class="close-modal" onclick="closeModal('product-modal')">&times;</span>
+            <div class="modal-header">
+                <h2 id="product-modal-title">Agregar Nuevo Producto</h2>
+                <p>Rellena los campos para actualizar el catálogo de la tienda</p>
+            </div>
+            <form id="product-form" onsubmit="handleProductSubmit(event)">
+                <input type="hidden" id="edit-product-id">
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="product-name">Nombre del Producto *</label>
+                        <input type="text" id="product-name" required placeholder="Ej: Cera Mate Pirona">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">Precio en Pesos Colombianos (COP) *</label>
+                        <input type="number" id="product-price" required placeholder="Ej: 45000">
+                        <small class="form-hint">Ingresa solo números. Ej: 45000 equivale a $45.000 COP</small>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="product-category">Categoría *</label>
+                        <select id="product-category" required>
+                            <option value="Cabello">Cabello</option>
+                            <option value="Barba">Barba</option>
+                            <option value="Afeitado">Afeitado</option>
+                            <option value="Combos">Combos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-status">Estado *</label>
+                        <select id="product-status" required>
+                            <option value="available">Disponible</option>
+                            <option value="out-of-stock">Agotado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-desc">Descripción *</label>
+                    <textarea id="product-desc" rows="3" required placeholder="Describe las características y beneficios del producto..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Imagen del Producto *</label>
+                    
+                    <!-- File upload input container -->
+                    <div id="image-file-container" class="image-input-container">
+                        <div class="file-drop-area">
+                            <i class="fa-solid fa-cloud-arrow-up file-icon"></i>
+                            <span class="file-msg">Arrastra aquí tu foto o haz clic para buscar</span>
+                            <input class="file-input" type="file" id="product-file-image" accept="image/*" onchange="previewLocalImage(event)">
+                        </div>
+                    </div>
+
+                    <!-- Live Image Preview -->
+                    <div class="image-preview-wrapper">
+                        <span>Previsualización de la Imagen:</span>
+                        <div class="img-preview-box">
+                            <img id="product-image-preview" src="https://placehold.co/300x300/1a1a1e/d4af37?text=Sin+Imagen" alt="Vista previa">
+                        </div>
+                        <input type="hidden" id="product-final-image">
+                    </div>
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('product-modal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Producto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 3: Agregar/Editar Publicación de Red Social o Personalizada -->
+    <div id="post-modal" class="modal">
+        <div class="modal-content modal-content-lg">
+            <span class="close-modal" onclick="closeModal('post-modal')">&times;</span>
+            <div class="modal-header">
+                <h2 id="post-modal-title">Agregar a la Galería</h2>
+                <p>Sube tus propias fotos, videos o pega el enlace de tu red social favorita</p>
+            </div>
+            <form id="post-form" onsubmit="handlePostSubmit(event)">
+                <input type="hidden" id="edit-post-id">
+                
+                <div class="form-group">
+                    <label for="post-type">Tipo de Contenido *</label>
+                    <select id="post-type" onchange="switchGalleryType()">
+                        <option value="social">Red Social (YouTube, TikTok, Instagram, Facebook)</option>
+                        <option value="foto">Foto Personalizada (Local o URL)</option>
+                        <option value="video">Video Personalizado (Local o URL)</option>
+                    </select>
+                </div>
+
+                <!-- SECCIÓN DE RED SOCIAL -->
+                <div id="gallery-social-section">
+                    <div class="form-group">
+                        <label for="post-url">Enlace (URL) de la Publicación *</label>
+                        <input type="url" id="post-url" placeholder="Ej: https://www.youtube.com/watch?v=..." oninput="autoDetectPlatform()">
+                        <small class="form-hint">Soportamos enlaces de YouTube (videos y Shorts), TikTok (videos), Instagram (posts/reels) y Facebook (posts/videos).</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-platform">Red Social (Se autodetecta al pegar el enlace)</label>
+                        <select id="post-platform" disabled>
+                            <option value="youtube">YouTube</option>
+                            <option value="tiktok">TikTok</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="unknown" selected>Desconocida (Por favor introduce un link válido)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN DE FOTO PERSONALIZADA -->
+                <div id="gallery-photo-section" class="hidden">
+                    <div class="form-group">
+                        <label>Origen de la Imagen *</label>
+                        <div class="image-source-options">
+                            <button type="button" class="btn-tab active" id="tab-photo-file" onclick="switchGallerySourceTab('photo', 'file')">Subir Archivo Local</button>
+                            <button type="button" class="btn-tab" id="tab-photo-url" onclick="switchGallerySourceTab('photo', 'url')">Pegar Enlace de Internet</button>
+                        </div>
+                        
+                        <div id="gallery-photo-file-container" class="image-input-container">
+                            <div class="file-drop-area">
+                                <i class="fa-solid fa-cloud-arrow-up file-icon"></i>
+                                <span class="file-msg">Arrastra aquí tu foto o haz clic para buscar</span>
+                                <input class="file-input" type="file" id="post-file-image" accept="image/*" onchange="previewGalleryPhotoLocal(event)">
+                            </div>
+                        </div>
+                        
+                        <div id="gallery-photo-url-container" class="image-input-container hidden">
+                            <input type="url" id="post-url-image" placeholder="https://ejemplo.com/imagen.jpg" oninput="previewGalleryPhotoUrl()">
+                        </div>
+
+                        <div class="image-preview-wrapper">
+                            <span>Previsualización de la Imagen:</span>
+                            <div class="img-preview-box">
+                                <img id="gallery-image-preview" src="https://placehold.co/300x300/1a1a1e/d4af37?text=Sin+Imagen" alt="Vista previa">
+                            </div>
+                            <input type="hidden" id="gallery-final-image">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN DE VIDEO PERSONALIZADO -->
+                <div id="gallery-video-section" class="hidden">
+                    <div class="form-group">
+                        <label>Origen del Video *</label>
+                        <div class="image-source-options">
+                            <button type="button" class="btn-tab active" id="tab-video-file" onclick="switchGallerySourceTab('video', 'file')">Subir Archivo Local</button>
+                            <button type="button" class="btn-tab" id="tab-video-url" onclick="switchGallerySourceTab('video', 'url')">Pegar Enlace de Internet</button>
+                        </div>
+                        
+                        <div id="gallery-video-file-container" class="image-input-container">
+                            <div class="file-drop-area">
+                                <i class="fa-solid fa-cloud-arrow-up file-icon"></i>
+                                <span class="file-msg">Arrastra aquí tu video o haz clic para buscar</span>
+                                <input class="file-input" type="file" id="post-file-video" accept="video/*" onchange="previewGalleryVideoLocal(event)">
+                            </div>
+                        </div>
+                        
+                        <div id="gallery-video-url-container" class="image-input-container hidden">
+                            <input type="url" id="post-url-video" placeholder="https://ejemplo.com/video.mp4" oninput="previewGalleryVideoUrl()">
+                        </div>
+
+                        <div class="video-preview-wrapper" id="gallery-video-preview-wrapper">
+                            <span>Previsualización del Video:</span>
+                            <div class="video-preview-box">
+                                <video id="gallery-video-preview" controls class="hidden" style="max-width:100%; max-height:200px; display:block; margin:0 auto;"></video>
+                                <span id="gallery-video-preview-placeholder" style="color: var(--text-muted); font-size: 0.8rem;">Sin Video Seleccionado</span>
+                            </div>
+                            <input type="hidden" id="gallery-final-video">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAMPOS COMUNES -->
+                <div class="form-group">
+                    <label for="post-title">Título *</label>
+                    <input type="text" id="post-title" required placeholder="Ej: Corte Degradado Navaja">
+                </div>
+
+                <div class="form-group">
+                    <label for="post-desc">Descripción (Opcional)</label>
+                    <textarea id="post-desc" rows="2" placeholder="Escribe una descripción corta para esta publicación de la galería..."></textarea>
+                </div>
+
+                <!-- Preview Grid Area para Redes -->
+                <div class="embed-preview-wrapper hidden" id="embed-preview-wrapper">
+                    <span>Vista Previa del Contenido Integrado:</span>
+                    <div id="embed-preview-container" class="embed-preview-container">
+                        <!-- Preview embedded here -->
+                    </div>
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('post-modal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="save-post-btn" disabled>Guardar Elemento</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 4: Editar Configuración de Página -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content modal-content-lg">
+            <span class="close-modal" onclick="closeModal('settings-modal')">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-gears gold-text"></i> Editar Información de la Página</h2>
+                <p>Personaliza los textos, enlaces y datos de contacto de tu barbería</p>
+            </div>
+            <form id="settings-form" onsubmit="handleSettingsSubmit(event)">
+                
+                <h3 style="color: var(--gold); border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-bottom: 15px; font-size: 0.95rem; text-transform: uppercase;">1. Sección Principal (Hero)</h3>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="settings-hero-title">Título Hero *</label>
+                        <input type="text" id="settings-hero-title" required placeholder="Ej: PIRONA.CUT">
+                    </div>
+                    <div class="form-group">
+                        <label for="settings-hero-subtitle">Subtítulo Hero *</label>
+                        <input type="text" id="settings-hero-subtitle" required placeholder="Ej: Estilo & Cuidado Masculino">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="settings-hero-desc">Descripción Hero *</label>
+                    <textarea id="settings-hero-desc" rows="2" required placeholder="Describe tu barbería..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="settings-hero-booking">Enlace de Reservas / Citas (URL)</label>
+                    <input type="url" id="settings-hero-booking" placeholder="https://wa.me/...">
+                    <small class="form-hint">Si lo dejas en blanco, usará el WhatsApp de Ventas por defecto.</small>
+                </div>
+
+                <h3 style="color: var(--gold); border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-bottom: 15px; font-size: 0.95rem; text-transform: uppercase; margin-top: 10px;">2. Información de Contacto</h3>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="settings-contact-address">Dirección *</label>
+                        <input type="text" id="settings-contact-address" required placeholder="Dirección del local">
+                    </div>
+                    <div class="form-group">
+                        <label for="settings-contact-phone">Teléfono de Exhibición *</label>
+                        <input type="text" id="settings-contact-phone" required placeholder="Ej: +57 300 000 0000">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="settings-contact-hours">Horarios de Atención *</label>
+                    <textarea id="settings-contact-hours" rows="3" required placeholder="Ej: Lunes a Sábado: 9AM - 8PM&#10;Domingos: 10AM - 4PM"></textarea>
+                </div>
+
+                <h3 style="color: var(--gold); border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-bottom: 15px; font-size: 0.95rem; text-transform: uppercase; margin-top: 10px;">3. Redes Sociales (Enlaces)</h3>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="settings-social-ig">Enlace Instagram (URL)</label>
+                        <input type="url" id="settings-social-ig" placeholder="https://instagram.com/tu_cuenta">
+                    </div>
+                    <div class="form-group">
+                        <label for="settings-social-tk">Enlace TikTok (URL)</label>
+                        <input type="url" id="settings-social-tk" placeholder="https://tiktok.com/@tu_cuenta">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="settings-social-yt">Enlace YouTube (URL)</label>
+                        <input type="url" id="settings-social-yt" placeholder="https://youtube.com/@tu_cuenta">
+                    </div>
+                    <div class="form-group">
+                        <label for="settings-social-fb">Enlace Facebook (URL)</label>
+                        <input type="url" id="settings-social-fb" placeholder="https://facebook.com/tu_cuenta">
+                    </div>
+                </div>
+
+                <h3 style="color: var(--gold); border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-bottom: 15px; font-size: 0.95rem; text-transform: uppercase; margin-top: 10px;">4. Sección de Mapa / Ubicación</h3>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="settings-map-label">Nombre del Local *</label>
+                        <input type="text" id="settings-map-label" required placeholder="Ej: PIRONA.CUT">
+                    </div>
+                    <div class="form-group">
+                        <label for="settings-map-desc">Eslogan del Mapa *</label>
+                        <input type="text" id="settings-map-desc" required placeholder="Ej: El templo del corte premium">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="settings-map-link">Enlace de Google Maps (URL) *</label>
+                    <input type="url" id="settings-map-link" required placeholder="https://maps.google.com/...">
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('settings-modal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 5: Personalización de Estilo -->
+    <div id="customizer-modal" class="modal">
+        <div class="modal-content modal-content-lg">
+            <span class="close-modal" onclick="closeModal('customizer-modal')">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-palette gold-text"></i> Diseñador de Estilo</h2>
+                <p>Personaliza los colores, fuentes y tamaños de letra de tu sitio web</p>
+            </div>
+            <form id="customizer-form" onsubmit="handleCustomizerSubmit(event)">
+                
+                <h3 style="color: var(--gold); border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-bottom: 15px; font-size: 0.95rem; text-transform: uppercase;">1. Esquema de Colores</h3>
+                
+                <div class="form-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div class="form-group">
+                        <label for="custom-bg-main"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:5px; background:var(--bg-main); border:1px solid #fff;"></span> Fondo Página</label>
+                        <input type="color" id="custom-bg-main" style="padding: 0; height: 40px; cursor: pointer;">
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-bg-card"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:5px; background:var(--bg-card); border:1px solid #fff;"></span> Fondo Secciones / Tarjetas</label>
+                        <input type="color" id="custom-bg-card" style="padding: 0; height: 40px; cursor: pointer;">
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-gold"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:5px; background:var(--gold); border:1px solid #fff;"></span> Color Acento (Dorado/Destacados)</label>
+                        <input type="color" id="custom-gold" style="padding: 0; height: 40px; cursor: pointer;">
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-text-main"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:5px; background:var(--text-main); border:1px solid #fff;"></span> Color Texto Principal</label>
+                        <input type="color" id="custom-text-main" style="padding: 0; height: 40px; cursor: pointer;">
+                    </div>
+                </div>
+
+                <h3 style="color: var(--gold); border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-bottom: 15px; font-size: 0.95rem; text-transform: uppercase; margin-top: 20px;">2. Tipografía & Fuentes</h3>
+
+                <div class="form-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div class="form-group">
+                        <label for="custom-font-heading">Fuente de Títulos y Logo</label>
+                        <select id="custom-font-heading">
+                            <option value="'Cinzel', serif">Cinzel (Lujo y Tradición)</option>
+                            <option value="'Playfair Display', serif">Playfair Display (Elegancia Clásica)</option>
+                            <option value="'Montserrat', sans-serif">Montserrat (Moderna y Sólida)</option>
+                            <option value="'Oswald', sans-serif">Oswald (Imponente y Fuerte)</option>
+                            <option value="'Outfit', sans-serif">Outfit (Limpia y Vanguardista)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="custom-font-body">Fuente de Textos y Párrafos</label>
+                        <select id="custom-font-body">
+                            <option value="'Montserrat', sans-serif">Montserrat (Limpia por Defecto)</option>
+                            <option value="'Inter', sans-serif">Inter (Gran Legibilidad)</option>
+                            <option value="'Roboto', sans-serif">Roboto (Clásica y Neutral)</option>
+                            <option value="'Sora', sans-serif">Sora (Geométrica y Moderna)</option>
+                            <option value="'Cinzel', serif">Cinzel (Serif Elegante)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--gold); border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-bottom: 15px; font-size: 0.95rem; text-transform: uppercase; margin-top: 20px;">3. Tamaño del Texto</h3>
+
+                <div class="form-group">
+                    <label for="custom-text-scale" id="label-text-scale">Escala de Tamaño: 100% (Normal)</label>
+                    <input type="range" id="custom-text-scale" min="0.8" max="1.4" step="0.05" value="1.0" oninput="updateTextScaleLabel(this.value)">
+                    <small class="form-hint">Ajusta el tamaño de la letra de toda la página para una mejor lectura.</small>
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('customizer-modal')">Cancelar</button>
+                    <button type="button" class="btn btn-admin-danger" onclick="resetThemeToDefault()" style="margin-right:auto;">Valores por Defecto</button>
+                    <button type="submit" class="btn btn-primary">Guardar Estilo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal for Gallery Images -->
+    <div id="lightbox-modal" class="modal" onclick="closeLightbox()" style="z-index: 2000; background: rgba(0,0,0,0.95);">
+        <span class="close-modal" onclick="closeLightbox()">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()" style="background:transparent; border:none; box-shadow:none; max-width:90vw; padding:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:80vh; border-radius:6px; border:2px solid var(--gold); box-shadow:var(--gold-glow-strong); object-fit:contain;">
+            <h3 id="lightbox-title" style="margin-top:20px; color:var(--text-main); font-family:'Cinzel', serif; letter-spacing:1px; text-shadow:0 2px 4px rgba(0,0,0,0.8); text-align:center;"></h3>
+        </div>
+    </div>
+
+    <!-- Script connection (no subdirectories) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
