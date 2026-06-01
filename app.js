@@ -1,4 +1,4 @@
-* ==========================================================================
+/* ==========================================================================
    LÓGICA PRINCIPAL - TIENDA VIRTUAL PIRONA.CUT
    Gestión de estado, carrito, WhatsApp y Panel de Administración
    ========================================================================== */
@@ -61,27 +61,27 @@ const DEFAULT_PRODUCTS = [
     },
     {
         id: "prod-img-2",
-        name: "Degradado Moderno (Mid Fade)",
+        name: "Cera para Cabello Evok con Esencia de Fresa y Aceite de Oliva (150g)",
         price: 22000,
-        description: "Transición perfecta y sombreado limpio ideal para el día a día.",
+        description: "Cera moldeadora de fijación ideal para estilizar y definir tu cabello con un agradable aroma a fresa. Contiene aceite de oliva para nutrir e hidratar la fibra capilar, aportando brillo natural sin dejar residuos grasos.",
         category: "Cabello",
         status: "available",
         image: "2.png"
     },
     {
         id: "prod-img-3",
-        name: "Delineado de Barba de Alta Precisión",
+        name: "Cera para Cabello Evok con Esencia de Manzana (150g)",
         price: 18000,
-        description: "Perfilado con navaja tradicional y acabado con aceite hidratante Royale.",
+        description: "Cera moldeadora de fijación flexible ideal para estructurar, definir y controlar tu peinado con un vibrante y fresco aroma a manzana verde. Aporta una textura ligera y un brillo natural al cabello sin dejar residuos ni efecto acartonado.",
         category: "Barba",
         status: "available",
         image: "Gemini_Generated_Image_3kr8z43kr8z43kr8.png"
     },
     {
         id: "prod-img-4",
-        name: "Corte Texturizado Moderno",
+        name: "Cera para Cabello Evok con Esencia de Coco y Aceite de Oliva (150g)",
         price: 24000,
-        description: "Estilo urbano con textura en la parte superior y degradado bajo.",
+        description: "Cera moldeadora de alta fijación diseñada para esculpir y controlar tu peinado con un fresco aroma a coco. Enriquecida con aceite de oliva para hidratar profundamente y fortalecer el cabello, aportando un brillo saludable sin dejar sensación pesada.",
         category: "Cabello",
         status: "available",
         image: "Gemini_Generated_Image_41cy9l41cy9l41cy.png"
