@@ -431,6 +431,11 @@
                 <div class="form-group">
                     <label>Imagen del Producto *</label>
                     
+                    <div class="image-source-options" style="margin-bottom: 15px;">
+                        <button type="button" class="btn-tab active" id="tab-product-file" onclick="switchProductSourceTab('file')">Subir Archivo Local</button>
+                        <button type="button" class="btn-tab" id="tab-product-url" onclick="switchProductSourceTab('url')">Pegar Enlace de Internet</button>
+                    </div>
+                    
                     <!-- File upload input container -->
                     <div id="image-file-container" class="image-input-container">
                         <div class="file-drop-area">
@@ -438,6 +443,12 @@
                             <span class="file-msg">Arrastra aquí tu foto o haz clic para buscar</span>
                             <input class="file-input" type="file" id="product-file-image" accept="image/*" onchange="previewLocalImage(event)">
                         </div>
+                    </div>
+
+                    <!-- URL input container -->
+                    <div id="product-url-container" class="image-input-container hidden">
+                        <input type="url" id="product-url-image" placeholder="https://ejemplo.com/imagen.jpg" oninput="previewUrlImage()" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main);">
+                        <small id="product-url-hint" class="form-hint" style="display: block; margin-top: 5px; color: var(--text-muted); font-size: 0.75rem;">Pega un enlace directo de imagen o un link de descarga directa.</small>
                     </div>
 
                     <!-- Live Image Preview -->
