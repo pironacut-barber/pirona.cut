@@ -7,117 +7,117 @@
 const DEFAULT_PRODUCTS = [
     {
         id: "prod-1",
-        name: "Cera Moldeadora Premium Matte",
+        name: "Kit Completo de Crecimiento Capilar: Minoxidil Kirkland (3 Frascos) + Derma Roller 540 Agujas",
         price: 45000,
-        description: "Cera de fijación fuerte y acabado mate natural. Perfecta para texturizar, dar volumen y peinar el cabello diariamente sin dejar residuos blancos ni sensación grasosa.",
+        description: "Maximiza los resultados de tu tratamiento con este combo especializado. Incluye tres frascos de Solución Tópica Kirkland Signature Minoxidil 5% para tres meses de tratamiento, junto con un Derma Roller de 540 agujas para estimular la circulación y potenciar la absorción del producto en los folículos pilosos. La combinación definitiva para combatir la caída y fomentar la regeneración capilar de manera profesional.",
         category: "Cabello",
-        status: "available",
-        image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=500&auto=format&fit=crop&q=60"
-    },
-    {
-        id: "prod-2",
-        name: "Aceite para Barba Royale",
-        price: 50000,
-        description: "Mezcla de aceites esenciales hidratantes con fragancia a madera de sándalo. Nutre y suaviza el vello facial áspero, al tiempo que elimina la resequedad de la piel bajo la barba.",
-        category: "Barba",
         status: "available",
         image: "https://images.unsplash.com/photo-1626015276681-2b44f25a2e68?w=500&auto=format&fit=crop&q=60"
     },
     {
+        id: "prod-2",
+        name: "Pack Trío de Ceras Capilares Evok (Fresa, Manzana y Coco - 150g c/u)",
+        price: 50000,
+        description: "Lleva la línea completa de ceras moldeadoras Evok y varía tu estilo cada día. Este set incluye las tres fragancias exclusivas: fresa, manzana y coco, todas con la fórmula base enriquecida con aceite de oliva para brindar una fijación flexible, brillo natural y nutrición profunda a tu cabello. La solución perfecta para quienes buscan versatilidad, aroma y cuidado profesional en un solo pack.",
+        category: "Barba",
+        status: "available",
+        image: "https://drive.google.com/file/d/1TcZ4laz2Mh8y_xI-pxZIsOeGwhY-GEqa/view?usp=sharing"
+    },
+    {
         id: "prod-3",
-        name: "Bálsamo Crecimiento Barba (Biotina)",
+        name: "Cera Moldeadora Black Cinco Estrellas Gold con Polímeros y Karité (150g)",
         price: 60000,
-        description: "Bálsamo estimulante enriquecido con Biotina y Minoxidil al 5%. Ayuda a poblar las zonas vacías de la barba fortaleciendo el folículo capilar y acelerando su crecimiento.",
+        description: "Cera moldeadora de fijación fuerte diseñada para un control total y duradero de tu peinado. Su fórmula avanzada con polímeros y extracto de karité no solo esculpe y define, sino que también aporta hidratación y suavidad al cabello. Es la elección perfecta para lograr estilos estructurados con un acabado impecable y un toque de nutrición natural.",
         category: "Barba",
         status: "available",
         image: "https://images.unsplash.com/photo-1605497746444-ac9dbd324d88?w=500&auto=format&fit=crop&q=60"
     },
     {
         id: "prod-4",
-        name: "Gel para Afeitado de Precisión",
+        name: "Cera Moldeadora Premium Molding Wax con Romero y Pantenol",
         price: 35000,
-        description: "Gel transparente que no hace espuma, ideal para perfilar barba y cuello con total visibilidad. Contiene aloe vera para calmar e hidratar la piel evitando la irritación.",
+        description: "Cera moldeadora y fijadora de alto desempeño, formulada con polímeros para un control preciso de tu peinado. Enriquecida con romero y pantenol, nutre tu cabello mientras le brinda estructura y fijación duradera. Su fórmula libre de parabenos garantiza un acabado profesional y saludable, ideal para quienes buscan estilo y cuidado en un solo producto.",
         category: "Afeitado",
         status: "available",
         image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=500&auto=format&fit=crop&q=60"
     },
     {
         id: "prod-5",
-        name: "Combo Barbería en Casa",
+        name: "Derma Roller 540 Agujas  Sistema de Estimulación de Colágeno y Regeneración Facial",
         price: 90000,
-        description: "Kit completo que incluye nuestra Cera Matte Premium para cabello y el Aceite Royale para barba. El regalo perfecto para el cuidado diario del hombre.",
+        description: "Dispositivo avanzado diseñado para el cuidado y rejuvenecimiento de la piel. Gracias a sus 540 agujas, estimula la producción natural de colágeno, ayudando a reafirmar, regenerar y mejorar la textura de tu rostro. Es la herramienta ideal para integrar en tu rutina de cuidado personal y lograr una piel con aspecto más terso y saludable.",
         category: "Combos",
         status: "available",
         image: "https://images.unsplash.com/photo-1593702295094-aea22597af65?w=500&auto=format&fit=crop&q=60"
     },
     {
         id: "prod-img-1",
-        name: "Corte Pompadour Clásico",
+        name: "Polvo Voluminizador Perfect Link Mattifying (30g)",
         price: 25000,
-        description: "Un estilo atemporal con volumen estructurado y peinado impecable.",
+        description: "Polvo texturizante de fijación fuerte diseñado para aportar volumen instantáneo y sin peso a tu cabello. Su fórmula mate es ideal para crear peinados modernos, desordenados y con mucha textura, manteniendo el estilo controlado durante todo el día. Perfecto para quienes buscan un acabado natural y con cuerpo sin sensación grasa.",
         category: "Cabello",
         status: "available",
         image: "1.png"
     },
     {
         id: "prod-img-2",
-        name: "Cera para Cabello Evok con Esencia de Fresa y Aceite de Oliva (150g)",
+        name: "Solución Tópica Kirkland Signature Minoxidil 5% Extra Fuerza para Hombres (60 ml)",
         price: 22000,
-        description: "Cera moldeadora de fijación ideal para estilizar y definir tu cabello con un agradable aroma a fresa. Contiene aceite de oliva para nutrir e hidratar la fibra capilar, aportando brillo natural sin dejar residuos grasos.",
+        description: "Tratamiento tópico clínicamente comprobado para combatir la caída del cabello y estimular su crecimiento. Esta fórmula de fuerza extra al 5% está diseñada específicamente para hombres, ofreciendo una solución sin aroma para uso diario. Cada frasco proporciona un suministro para un mes, ayudando a reactivar los folículos pilosos y recuperar la densidad capilar de manera efectiva.",
         category: "Cabello",
         status: "available",
         image: "2.png"
     },
     {
         id: "prod-img-3",
-        name: "Cera para Cabello Evok con Esencia de Manzana (150g)",
+        name: "Shampoo Fortalecedor Nativo's Fenix Barber con Trichogen, Biotina y Arginina (350 ml)",
         price: 18000,
-        description: "Cera moldeadora de fijación flexible ideal para estructurar, definir y controlar tu peinado con un vibrante y fresco aroma a manzana verde. Aporta una textura ligera y un brillo natural al cabello sin dejar residuos ni efecto acartonado.",
+        description: "Shampoo especializado en el fortalecimiento capilar, formulado con Trichogen, biotina y arginina para revitalizar el cabello desde la raíz. Su potente combinación de extractos naturales, incluyendo Panax Ginseng, bardana, saw palmetto y gluconato de zinc, ayuda a reducir la caída y mejorar la densidad capilar. Ideal para una limpieza profunda que promueve un cabello más fuerte, sano y resistente en cada lavada.",
         category: "Barba",
         status: "available",
         image: "Gemini_Generated_Image_3kr8z43kr8z43kr8.png"
     },
     {
         id: "prod-img-4",
-        name: "Cera para Cabello Evok con Esencia de Coco y Aceite de Oliva (150g)",
+        name: "Cera Negra Premium Black Hair Wax con Romero y Pantenol",
         price: 24000,
-        description: "Cera moldeadora de alta fijación diseñada para esculpir y controlar tu peinado con un fresco aroma a coco. Enriquecida con aceite de oliva para hidratar profundamente y fortalecer el cabello, aportando un brillo saludable sin dejar sensación pesada.",
+        description: "Cera moldeadora de fijación media diseñada para definir y dar estilo a tu cabello con un acabado natural. Su fórmula especializada, enriquecida con romero y pantenol, ayuda a nutrir y fortalecer la hebra capilar mientras mantienes un peinado impecable durante todo el día. Ideal para lograr un look definido y saludable sin sensación pesada.",
         category: "Cabello",
         status: "available",
         image: "Gemini_Generated_Image_41cy9l41cy9l41cy.png"
     },
     {
         id: "prod-img-5",
-        name: "Estilo Buzz Cut con Diseño",
+        name: "Shampoo Limpiador Kirkland Signature con Minoxidil Extra Fuerza (500 ml)",
         price: 20000,
-        description: "Corte rapado muy pulido complementado con líneas de diseño artístico.",
+        description: "Tratamiento tópico en shampoo diseñado para estimular la regeneración capilar. Su fórmula de extra fuerza ayuda a reactivar los folículos pilosos, fortaleciendo el cabello desde la raíz y combatiendo la caída. Ideal como parte de tu rutina diaria de cuidado y recuperación capilar.",
         category: "Cabello",
         status: "available",
         image: "Gemini_Generated_Image_52vb7f52vb7f52vb.png"
     },
     {
         id: "prod-img-6",
-        name: "Arreglo de Barba Completo",
+        name: "Cera para Cabello Evok con Esencia de Manzana (150g)",
         price: 22000,
-        description: "Recorte y perfilado adaptado a las facciones con toallas calientes.",
+        description: "Cera moldeadora de fijación flexible ideal para estructurar, definir y controlar tu peinado con un vibrante y fresco aroma a manzana verde. Aporta una textura ligera y un brillo natural al cabello sin dejar residuos ni efecto acartonado.",
         category: "Barba",
         status: "available",
         image: "Gemini_Generated_Image_763t1l763t1l763t.png"
     },
     {
         id: "prod-img-7",
-        name: "Corte Ejecutivo Clásico",
+        name: "Cera para Cabello Evok con Esencia de Coco y Aceite de Oliva (150g)",
         price: 25000,
-        description: "Estilo formal peinado de lado con brillo natural y fijación media.",
+        description: "Cera moldeadora de alta fijación diseñada para esculpir y controlar tu peinado con un fresco aroma a coco. Enriquecida con aceite de oliva para hidratar profundamente y fortalecer el cabello, aportando un brillo saludable sin dejar sensación pesada.tilo formal peinado de lado con brillo natural y fijación media.",
         category: "Cabello",
         status: "available",
         image: "Gemini_Generated_Image_9x9w9w9x9w9w9x9w.png"
     },
     {
         id: "prod-img-8",
-        name: "Degradado Alto (High Fade)",
+        name: "Cera para Cabello Evok con Esencia de Fresa y Aceite de Oliva (150g)",
         price: 23000,
-        description: "Sombreado alto y nítido para un look fresco y duradero.",
+        description: "Cera moldeadora de fijación ideal para estilizar y definir tu cabello con un agradable aroma a fresa. Contiene aceite de oliva para nutrir e hidratar la fibra capilar, aportando brillo natural sin dejar residuos grasos.",
         category: "Cabello",
         status: "available",
         image: "Gemini_Generated_Image_czrvwmczrvwmczrv.png"
